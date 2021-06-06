@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinControls.Views.SamplePage"
+             xmlns:ctr="clr-namespace:XamarinControls.Controls"
+             xmlns:vm="clr-namespace:XamarinControls.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:DataType="vm:SampleViewModel">
+
+    <ContentPage.BindingContext>
+        <vm:SampleViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Margin="16">
+        <ctr:TextBox BindingContext="{Binding FirstName}"></ctr:TextBox>
+        <ctr:TextBox BindingContext="{Binding LastName}"></ctr:TextBox>
+        <ctr:DropDownList BindingContext="{Binding Gender}"></ctr:DropDownList>
+        <ctr:TextBox BindingContext="{Binding Email}"></ctr:TextBox>
+        <ctr:TextBox BindingContext="{Binding Password}"></ctr:TextBox>
+        
+        <Button Text="Submit">
+            <Button.Behaviors>
+                <xct:EventToCommandBehavior EventName="Clicked" Command="{Binding SubmitCommand}" />
+            </Button.Behaviors>
+        </Button>
+    </StackLayout>
+</ContentPage>

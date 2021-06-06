@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinControls.Controls.TextBox"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:local="clr-namespace:XamarinControls.Models"
+             x:DataType="local:TextField">
+    
+    <ContentView.Content>
+        <StackLayout Margin="0,0,0,16">
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="Label" Text="{Binding Label}" FontSize="Large" />
+                <Label Text="*" TextColor="Red" IsVisible="{Binding Mandatory}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="Entry" HorizontalOptions="FillAndExpand" Text="{Binding Value}">
+                    <Entry.Behaviors>
+                        <xct:MultiValidationBehavior x:Name="FieldValidationBehaviors" 
+                                                     x:FieldModifier="public" 
+                                                     Flags="ValidateOnValueChanging" 
+                                                     InvalidStyle="{StaticResource InvalidEntryStyle}" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Image></Image>
+            </StackLayout>
+            <Label x:Name="ErrorLabel" Text="{Binding Errors[0], Source={x:Reference FieldValidationBehaviors}}" TextColor="Red" IsVisible="{Binding IsNotValid, Source={x:Reference FieldValidationBehaviors}}" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
