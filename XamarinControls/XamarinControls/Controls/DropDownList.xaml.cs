@@ -25,20 +25,7 @@ namespace XamarinControls.Controls
             Field field = BindingContext as Field;
             if (!_fieldbindingSet && field != null)
             {
-                if (field.Mandatory)
-                {
-                    FieldValidationBehaviors.Children.Add(new MandatoryFieldValidationBehavior(field.Label));
-                }
-
-                var ddlField = field as IDropDownListField;
-                if (ddlField != null)
-                {
-                    Picker.SetBinding(Picker.ItemsSourceProperty, "Items");
-                    Picker.SetBinding(Picker.SelectedItemProperty, "SelectedItem");
-                    Picker.ItemDisplayBinding = new Binding("Value");
-                }
-
-                field.FieldValidationBehaviors = FieldValidationBehaviors;
+                field.SetupBinding(Picker, FieldValidationBehaviors);
                 _fieldbindingSet = true;
             }
         }

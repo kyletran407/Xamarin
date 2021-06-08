@@ -32,5 +32,16 @@ namespace XamarinControls.Models
                 }
             }
         }
+
+        ListItem IDropDownListField.SelectedItem
+        {
+            get => SelectedItem;
+            set => SelectedItem = (ListItem<T>)value;
+        }
+
+        IEnumerable<ListItem> IDropDownListField.ItemsSource
+        {
+            set => ItemsSource = (IEnumerable<ListItem<T>>)value;
+        }
     }
 }

@@ -2,17 +2,23 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinControls.Controls.DropDownList"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:i="clr-namespace:XamarinControls.Interfaces"
+             x:DataType="i:IDropDownListField">
     
     <ContentView.Content>
-        <StackLayout Margin="0,0,0,16">
-            <StackLayout Orientation="Horizontal">
+        <StackLayout Margin="0,0,0,16" CompressedLayout.IsHeadless="True">
+            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
                 <Label x:Name="Label" Text="{Binding Label}" FontSize="Large" />
                 <Label Text="*" TextColor="Red" IsVisible="{Binding Mandatory}" />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <Picker x:Name="Picker" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                <Picker x:Name="Picker" 
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding Items}"
+                        SelectedItem="{Binding SelectedItem}"
+                        ItemDisplayBinding="{Binding Name}">
                     <Picker.Behaviors>
                         <xct:MultiValidationBehavior x:Name="FieldValidationBehaviors" 
                                                      x:FieldModifier="public" 

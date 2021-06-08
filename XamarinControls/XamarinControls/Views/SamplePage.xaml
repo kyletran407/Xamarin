@@ -11,17 +11,20 @@
         <vm:SampleViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout Margin="16">
-        <ctr:TextBox BindingContext="{Binding FirstName}"></ctr:TextBox>
-        <ctr:TextBox BindingContext="{Binding LastName}"></ctr:TextBox>
-        <ctr:DropDownList BindingContext="{Binding Gender}"></ctr:DropDownList>
-        <ctr:TextBox BindingContext="{Binding Email}"></ctr:TextBox>
-        <ctr:TextBox BindingContext="{Binding Password}"></ctr:TextBox>
+    <ScrollView>
+        <StackLayout Margin="16">
+            <ctr:TextBox BindingContext="{Binding FirstName}"></ctr:TextBox>
+            <ctr:TextBox BindingContext="{Binding LastName}"></ctr:TextBox>
+            <ctr:DropDownList BindingContext="{Binding Gender}"></ctr:DropDownList>
+            <ctr:TextBox BindingContext="{Binding Email}"></ctr:TextBox>
+            <ctr:TextBox BindingContext="{Binding Password}"></ctr:TextBox>
+            <ctr:TextBox BindingContext="{Binding ConfirmPassword}"></ctr:TextBox>
         
-        <Button Text="Submit">
-            <Button.Behaviors>
-                <xct:EventToCommandBehavior EventName="Clicked" Command="{Binding SubmitCommand}" />
-            </Button.Behaviors>
-        </Button>
-    </StackLayout>
+            <Button Text="Submit">
+                <Button.Behaviors>
+                    <xct:EventToCommandBehavior EventName="Clicked" Command="{Binding SubmitCommand}" />
+                </Button.Behaviors>
+            </Button>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

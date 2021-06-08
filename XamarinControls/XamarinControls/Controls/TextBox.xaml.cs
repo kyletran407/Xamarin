@@ -23,26 +23,7 @@ namespace XamarinControls.Controls
             Field field = BindingContext as Field;
             if (!_fieldbindingSet && field != null)
             {
-                if (field.Mandatory)
-                {
-                    FieldValidationBehaviors.Children.Add(new MandatoryFieldValidationBehavior(field.Label));
-                }
-
-                var txtField = field as TextField;
-                if (txtField != null)
-                {
-                    if (txtField.BindingType == BindingType.Email)
-                    {
-                        FieldValidationBehaviors.Children.Add(new EmailFieldValidationBehavior());
-                    }
-
-                    if (txtField.BindingType == BindingType.Password)
-                    {
-                        Entry.IsPassword = true;
-                    }
-                }
-
-                field.FieldValidationBehaviors = FieldValidationBehaviors;
+                field.SetupBinding(Entry, FieldValidationBehaviors);
                 _fieldbindingSet = true;
             }
         }
