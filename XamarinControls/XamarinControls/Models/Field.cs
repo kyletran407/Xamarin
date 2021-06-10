@@ -8,24 +8,24 @@ using XamarinControls.ViewModels;
 
 namespace XamarinControls.Models
 {
-    public class Field<T> : Field, IField
+    public class Field<T> : Field
     {
-        protected T _value;
-        public virtual T Value
+        public new T Value
+        {
+            get => (T)_value;
+            set => SetProperty(ref _value, value);
+        }
+    }
+
+    public abstract class Field : BaseViewModel, IField
+    {
+        protected object _value;
+        public object Value
         {
             get => _value;
             set => SetProperty(ref _value, value);
         }
 
-        object IField.Value 
-        { 
-            get => Value; 
-            set => Value = (T)value; 
-        }
-    }
-
-    public abstract class Field : BaseViewModel
-    {
         private string _label;
         public string Label
         {

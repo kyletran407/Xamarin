@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Xamarin.CommunityToolkit.Behaviors;
+using Xamarin.Forms;
 using XamarinControls.Interfaces;
 
 namespace XamarinControls.Models
@@ -11,7 +13,7 @@ namespace XamarinControls.Models
         public IList<ListItem> Items => _items;
 
         protected ListItem<T> _selectedItem;
-        public virtual ListItem<T> SelectedItem
+        public  ListItem<T> SelectedItem
         {
             get => _selectedItem;
             set
@@ -42,6 +44,11 @@ namespace XamarinControls.Models
         IEnumerable<ListItem> IDropDownListField.ItemsSource
         {
             set => ItemsSource = (IEnumerable<ListItem<T>>)value;
+        }
+
+        public override void SetupBinding(VisualElement view, MultiValidationBehavior fieldValidationBehaviors)
+        {
+            base.SetupBinding(view, fieldValidationBehaviors);
         }
     }
 }

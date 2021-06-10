@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinControls.Controls.TextBox"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:local="clr-namespace:XamarinControls.Models"
-             x:DataType="local:TextField">
+             xmlns:local="clr-namespace:XamarinControls.Interfaces"
+             x:DataType="local:IField">
     
     <ContentView.Content>
         <StackLayout Margin="0,0,0,16" CompressedLayout.IsHeadless="True">
